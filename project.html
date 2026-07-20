@@ -5,7 +5,7 @@
   <title>Project Artifact — Zi An Lee</title><meta name="description" content="Project artifact from Zi An Lee's portfolio museum.">
   <link rel="stylesheet" href="./static.css?v=14">
   <link rel="stylesheet" href="./logo-sculpt.css?v=2">
-  <link rel="stylesheet" href="./project-artifact.css?v=3">
+  <link rel="stylesheet" href="./project-artifact.css?v=4">
   <link rel="stylesheet" href="./recruiter-bar.css?v=2">
 </head>
 <body>
@@ -17,10 +17,18 @@
   <script>
     const key = new URLSearchParams(location.search).get('project') || 'fintech';
     const p = window.PROJECTS[key] || window.PROJECTS.fintech;
+    const featuredArtifacts = {
+      hlf: { label: 'LIVE WORKFLOW', title: 'AUTOMATION ENGINE', hint: 'DRAG TO INSPECT · HOVER A STAGE', items: ['Trigger', 'Validate', 'Route', 'Complete'] },
+      ascent: { label: 'CAREER SIGNAL', title: 'PATHFINDING COMPASS', hint: 'DRAG TO ORIENT · SELECT A MILESTONE', items: ['Profile', 'Gap map', 'Learn', 'Launch'] },
+      tarotcarrot: { label: 'PRIVATE EXPERIMENT', title: 'THE GROWTH ORACLE', hint: 'DRAG TO TILT · REVEAL A SYMBOL', items: ['Spark', 'Root', 'Grow', 'Reveal'] },
+      unclegowhere: { label: 'AGENT NETWORK', title: 'ONE TRIP · MANY SPECIALISTS', hint: 'DRAG TO ORBIT · SELECT AN AGENT', items: ['Flights', 'Stays', 'Plans', 'Reviews'] }
+    };
     document.title = `${p.name} — Zi An Lee`;
     document.querySelector('meta[name="description"]').content = p.tagline;
     document.documentElement.style.setProperty('--artifact-a', p.colors[0]);
     document.documentElement.style.setProperty('--artifact-b', p.colors[1]);
+    document.body.dataset.project = key;
+    const featured = featuredArtifacts[key];
     const artifactMarkup = key === 'fintech'
       ? `<div class="artifact-stage artifact-stage--unova" aria-label="Interactive UNOVA wealth constellation">
           <canvas class="unova-globe" aria-label="Drag to rotate the portfolio system. Select an asset node to inspect it." tabindex="0"></canvas>
@@ -33,7 +41,16 @@
             <button type="button" data-asset="equities" class="is-active" style="--signal:#58a9ff">Equities</button><button type="button" data-asset="bonds" style="--signal:#9a7cff">Bonds</button><button type="button" data-asset="real-assets" style="--signal:#d27a58">Real assets</button><button type="button" data-asset="digital" style="--signal:#35d6b7">Digital</button><button type="button" data-asset="commodities" style="--signal:#f5b51b">Commodities</button>
           </div>
         </div>`
-      : `<div class="artifact-stage" aria-label="Abstract clay artifact for ${p.name}"><div class="artifact"></div></div>`;
+      : featured
+        ? `<div class="artifact-stage artifact-stage--featured artifact-stage--${key}" data-project-artifact="${key}" aria-label="Interactive ${p.name} project artifact">
+            <div class="artifact-atmosphere" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <canvas class="project-sculpt" aria-label="Drag to rotate the ${p.name} artifact. Select a project signal to inspect it." tabindex="0"></canvas>
+            <div class="project-sculpt__signal" aria-hidden="true"><span>${featured.label}</span><b>${featured.title}</b></div>
+            <div class="project-sculpt__readout" aria-live="polite"><span>ACTIVE SIGNAL</span><strong>${featured.items[0]}</strong><p></p></div>
+            <div class="project-sculpt__hint" aria-hidden="true">${featured.hint}</div>
+            <div class="project-sculpt__legend" aria-label="${p.name} artifact controls">${featured.items.map((item, index) => `<button type="button" data-signal="${index}" class="${index === 0 ? 'is-active' : ''}"><i></i>${item}</button>`).join('')}</div>
+          </div>`
+        : `<div class="artifact-stage" aria-label="Abstract clay artifact for ${p.name}"><div class="artifact"></div></div>`;
     document.getElementById('project').innerHTML = `
       <section class="project-hero">
         <div class="project-hero__copy"><span class="kicker">${p.category}</span><h1 class="project-title">${p.name}</h1><p class="project-tagline">${p.tagline}</p><div class="status-row"><span>${p.visibility}</span><span>Portfolio artifact</span></div></div>
@@ -48,7 +65,7 @@
         <article class="project-card project-card--wide"><span class="kicker">Next room</span><h2>Continue exploring</h2><p>${p.github ? 'The source repository is public, or you can return to the museum for another artifact.' : 'This work is private or collaborative. Connect with me for the case study, or return to the museum.'}</p><div class="project-actions">${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">View GitHub repository</a>` : `<a href="./contact.html">Ask about this project</a>`}<a href="./index.html">Back to museum</a></div></article>
       </div></section>`;
   </script>
-  <script type="module" src="./project-artifact.js?v=2"></script>
+  <script type="module" src="./project-artifact.js?v=3"></script>
   <script type="module" src="./logo-sculpt.js?v=2"></script>
   <script type="module" src="./sliding-actions.js?v=1"></script>
 </body>
