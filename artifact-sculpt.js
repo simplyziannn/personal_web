@@ -53,8 +53,8 @@ const blush = new THREE.MeshStandardMaterial({ color: 0xf5a9b4, roughness: 0.72 
 const textureLoader = new THREE.TextureLoader();
 const tarotCardBack = textureLoader.load('./public/assets/projects/tarotcarrot/card-back.png', texture => { texture.colorSpace = THREE.SRGBColorSpace; });
 const loversCard = textureLoader.load('./public/assets/projects/tarotcarrot/the-lovers.png', texture => { texture.colorSpace = THREE.SRGBColorSpace; });
-const tarotBackMaterial = new THREE.MeshBasicMaterial({ map: tarotCardBack, color: 0xffffff });
-const loversMaterial = new THREE.MeshBasicMaterial({ map: loversCard, color: 0xffffff });
+const tarotBackMaterial = new THREE.MeshBasicMaterial({ map: tarotCardBack, color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4 });
+const loversMaterial = new THREE.MeshBasicMaterial({ map: loversCard, color: 0xffffff, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4 });
 
 const root = new THREE.Group();
 root.name = 'featured-artifacts-root';
@@ -131,7 +131,7 @@ function buildTarot() {
   const g = group('tarotcarrot-cheerful-oracle');
   const cardGroup=group('tarot-custom-card');cardGroup.position.set(-.3,.12,-.42);cardGroup.rotation.z=-.12;g.add(cardGroup);
   const card = mesh(roundedCard(1.22,1.85,0.16,0.11), charcoal, 'tarot-card-frame'); card.geometry.center(); cardGroup.add(card);
-  cardGroup.add(mesh(new THREE.PlaneGeometry(1.05,1.58),tarotBackMaterial,'tarot-card-back',[0,0,.115]));
+  const cardArtwork=mesh(new THREE.PlaneGeometry(1.05,1.58),tarotBackMaterial,'tarot-card-back',[0,0,.17]);cardArtwork.renderOrder=2;cardGroup.add(cardArtwork);
   const mascot=group('tarot-carrot-mascot');mascot.position.set(.34,-.28,.28);g.add(mascot);
   mascot.add(mesh(new THREE.SphereGeometry(.45,32,22),carrotOrange,'carrot-head',[0,.08,0],[0,0,0],[1,.78,.78]));
   mascot.add(mesh(new THREE.ConeGeometry(.4,.9,30),carrotOrange,'carrot-root',[0,-.42,0],[0,0,Math.PI],[1,1,.78]));
@@ -143,7 +143,7 @@ function buildTarot() {
   const smile=new THREE.QuadraticBezierCurve3(new THREE.Vector3(-.1,-.01,.4),new THREE.Vector3(0,-.13,.44),new THREE.Vector3(.1,-.01,.4));mascot.add(mesh(new THREE.TubeGeometry(smile,20,.018,6,false),charcoal,'carrot-smile'));
   mascot.add(mesh(new THREE.CapsuleGeometry(.07,.38,5,10),carrotOrange,'carrot-left-arm',[-.46,.0,.0],[0,0,-1.05]));mascot.add(mesh(new THREE.CapsuleGeometry(.07,.38,5,10),carrotOrange,'carrot-right-arm',[.46,.0,.0],[0,0,1.05]));
   const soil=mesh(new THREE.CylinderGeometry(.78,.86,.2,42),bronzeDark,'tarot-soil',[.15,-.82,.55],[0,0,0],[1,.42,.68]);g.add(soil);
-  [[-1.0,.76,-.1,.18],[.96,.72,-.08,-.16]].forEach(([x,y,z,r],i)=>{const orbitCard=group(`tarot-orbit-card-${i+1}`);orbitCard.position.set(x,y,z);orbitCard.rotation.z=r;const frame=mesh(roundedCard(.45,.68,.06,.045),charcoal,`tarot-orbit-frame-${i+1}`);frame.geometry.center();orbitCard.add(frame);orbitCard.add(mesh(new THREE.PlaneGeometry(.38,.58),i?loversMaterial:tarotBackMaterial,`tarot-orbit-art-${i+1}`,[0,0,.095]));g.add(orbitCard);});
+  [[-1.0,.76,-.1,.18],[.96,.72,-.08,-.16]].forEach(([x,y,z,r],i)=>{const orbitCard=group(`tarot-orbit-card-${i+1}`);orbitCard.position.set(x,y,z);orbitCard.rotation.z=r;const frame=mesh(roundedCard(.45,.68,.06,.045),charcoal,`tarot-orbit-frame-${i+1}`);frame.geometry.center();orbitCard.add(frame);const orbitArtwork=mesh(new THREE.PlaneGeometry(.38,.58),i?loversMaterial:tarotBackMaterial,`tarot-orbit-art-${i+1}`,[0,0,.13]);orbitArtwork.renderOrder=2;orbitCard.add(orbitArtwork);g.add(orbitCard);});
   g.userData.mascot=mascot;
   return g;
 }
