@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "modules": {},
+  "reviewAttempts": {},
+  "workContexts": {
+    "featured-artifacts": {
+      "files": {
+        "/Users/zian/Documents/Personal Code/personal web/production/sculpt/exhibits-sculpt.json": "18814968bf08a68ce054a701c907443d949a10a6c20e6d879e13e06d510836b2",
+        "/Users/zian/Documents/Personal Code/personal web/production/sculpt/exhibits-sculpt.modules/featured-artifacts.json": "d5045b7f84c13a3dacd294bc9b64425d3b259cd72331105b92c6b13134d642f8",
+        "/Users/zian/plugins/threejs-object-sculptor/skills/object-to-threejs-procedural/references/anatomical-regions.md": "aba3d5d6d3aae4a6de0647855252b2d876524a2298fc013ead209410fe85df85",
+        "/Users/zian/plugins/threejs-object-sculptor/skills/object-to-threejs-procedural/references/attachment-joint-correctness.md": "997019074af3eff4f3cbe39217f8115f86ec831adef1c82f5bd58b0ea2f210a7",
+        "/Users/zian/plugins/threejs-object-sculptor/skills/object-to-threejs-procedural/references/material-lighting-realism.md": "a68523a06b986fb71b335a51065a6a07589027278858049ca7bdbe6299dbf76e",
+        "/Users/zian/plugins/threejs-object-sculptor/skills/object-to-threejs-procedural/references/procedural-patterns.md": "17c6c83243ccf2c5b549ae3290ff0456d172925d60959a0753d27a066d3b8d47"
+      },
+      "moduleHash": "598d20a59b9a95ed8889833c0a7252fb575dd1e2f8bbfb18758c67501f1d677b",
+      "recordedAt": "2026-07-19T07:48:55.595829+00:00"
+    }
+  },
+  "updatedAt": "2026-07-19T07:48:55.595895+00:00"
+}

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Zi An Lee — Systems, Built With Purpose</title>
+  <meta name="description" content="Enter Zi An Lee's neo-Roman museum of engineering, financial technology, automation and ambitious systems." />
+  <meta name="theme-color" content="#f2e7d6" />
+  <link rel="stylesheet" href="./artifact-sculpt.css?v=11" />
+  <link rel="stylesheet" href="./logo-sculpt.css?v=2" />
+  <link rel="stylesheet" href="./recruiter-bar.css?v=2" />
+  <script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.min.js"}}</script>
+  <style>
+    :root, .sw-root {
+      --sw-bg: #f2e7d6;
+      --sw-ink: #252738;
+      --sw-ink-soft: #6e6670;
+      --sw-accent: #c58b45;
+      --sw-font-display: Georgia, "Times New Roman", serif;
+      --sw-font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+
+    html, body { margin: 0; background: #f2e7d6; }
+    #final-transition{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:#f2e7d6;color:#252738;opacity:0;pointer-events:none;transition:opacity .55s ease;text-align:center}
+    #final-transition div{transform:translateY(14px);transition:transform .55s ease}#final-transition span{display:block;font:700 .72rem/1 ui-sans-serif,system-ui;letter-spacing:.18em;color:#c58b45;margin-bottom:14px}#final-transition strong{font:700 clamp(2.2rem,6vw,5.5rem)/.95 Georgia,serif}
+    body.is-entering-atrium #final-transition{opacity:1;pointer-events:auto}body.is-entering-atrium #final-transition div{transform:none}
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <nav class="recruiter-bar" aria-label="Recruiter shortcuts">
+    <a href="#work" aria-current="page">Work</a>
+    <a href="./contact.html#experience">Experience</a>
+    <a href="./contact.html#contact">Contact</a>
+  </nav>
+  <div id="final-transition" aria-hidden="true"><div><span>THE FINAL ATRIUM</span><strong>One more room.</strong></div></div>
+  <main id="world">
+    <section data-sw-seo>
+      <h1>Every build has an entrance.</h1>
+      <p>Zi An Lee is a Computer Engineering undergraduate building at the intersection of financial technology, artificial intelligence and software infrastructure.</p>
+      <h2>The Featured Gallery — Five projects, one path forward</h2>
+      <p>Five interactive sculpted exhibits highlight UNOVA, Operations Automation, Ascent, TarotCarrot and UncleGoWhere. The complete fourteen-project archive remains available in the Final Atrium.</p>
+      <h2>The Contact Oculus — Let’s build what comes next</h2>
+      <p>Connect with Zi An Lee through LinkedIn or explore the public work on GitHub.</p>
+      <p><a href="https://www.linkedin.com/in/zi-an-lee/">LinkedIn</a> · <a href="https://github.com/simplyziannn">GitHub</a></p>
+    </section>
+  </main>
+
+  <script src="./scrub-engine.js?v=8"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'ZI AN LEE', href: '#top' },
+      hint: 'scroll to enter',
+      nav: false,
+      atmosphere: true,
+      diveScroll: 2,
+      connScroll: 0.2,
+      crossfade: 0.08,
+      sections: [
+        {
+          id: 'portico',
+          label: 'The Portico',
+          still: './public/assets/stills/01-portico-closed-v3.png?v=4',
+          poster: './public/assets/posters/01-portico-to-systems.webp?v=6',
+          clip: './public/assets/vid/01-portico-to-systems.mp4?v=6',
+          accent: '#c58b45',
+          scroll: 2,
+          linger: 0.4,
+          eyebrow: 'THE PORTICO',
+          title: 'Every build has an entrance.',
+          body: 'I’m Zi An — a computer engineer working across financial technology, AI and infrastructure. Scroll to open the doors inward.',
+          tags: ['FinTech', 'AI', 'Infrastructure']
+        },
+        {
+          id: 'treasury',
+          label: 'Featured Gallery',
+          still: './public/assets/stills/02-artifact-hall-v3.webp?v=4',
+          poster: './public/assets/posters/03-treasury-to-oculus.webp?v=6',
+          clip: './public/assets/vid/03-treasury-to-oculus.mp4?v=6',
+          accent: '#c58b45',
+          scroll: 6.5,
+          linger: 0.22,
+          eyebrow: 'THE FEATURED GALLERY',
+          title: 'Five exhibits. One path forward.',
+          body: 'Walk with me through five projects selected for impact, technical depth and product thinking.',
+          tags: ['Interactive artifacts', 'Scroll to explore'],
+          featuredExhibits: [
+            { name: 'UNOVA', impact: '4th out of 171 teams', description: 'A unified financial-wellness platform spanning portfolio import, analytics and retirement planning.', href: './project.html?project=fintech' },
+            { name: 'Operations Automation', impact: 'Reduced operational workload by 95%', description: 'Reliable backend workflows that reduce manual operations and deliver measurable impact.', href: './project.html?project=hlf' },
+            { name: 'Ascent', impact: 'Multi-agent career intelligence', description: 'AI-powered TechFest 2026 career guidance for assessing job readiness, finding skill gaps and planning clear next steps.', href: './project.html?project=ascent' },
+            { name: 'TarotCarrot', impact: 'A private product experiment', description: 'An exploratory product build represented as a carved oracle artifact; further details are available on request.', href: './project.html?project=tarotcarrot' },
+            { name: 'UncleGoWhere', impact: 'An agentic travel companion', description: 'An OpenClaw multi-agent travel assistant that coordinates flights, stays, itineraries and reviews through Telegram.', href: './project.html?project=unclegowhere' }
+          ]
+        },
+        {
+          id: 'oculus',
+          label: 'Contact Oculus',
+          still: './public/assets/stills/04-oculus.png?v=4',
+          poster: './public/assets/posters/04-oculus-finale.webp?v=4',
+          clip: './public/assets/vid/04-oculus-finale.mp4?v=4',
+          accent: '#6e7890',
+          scroll: 2,
+          linger: 0.5,
+          eyebrow: 'THE CONTACT OCULUS',
+          title: 'Let’s build what comes next.',
+          body: 'If you’re working on ambitious software, intelligent systems or financial technology, I’d like to hear about it.',
+          tags: ['Singapore', 'Open to ideas', 'Let’s connect'],
+          cta: {
+            primary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/zi-an-lee/' },
+            secondary: { label: 'Enter final atrium', href: './contact.html' }
+          }
+        }
+      ],
+      connectors: []
+    });
+
+    const openWork = () => document.querySelectorAll('.sw-route__dot')[1]?.click();
+    document.querySelector('.recruiter-bar a[href="#work"]')?.addEventListener('click', event => {
+      event.preventDefault();
+      openWork();
+      history.replaceState(null, '', '#work');
+    });
+    if (location.hash === '#work') requestAnimationFrame(openWork);
+
+    let previousScrollY = window.scrollY;
+    let atriumTimer = null;
+    window.addEventListener('scroll', () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const movingDown = window.scrollY > previousScrollY;
+      if (movingDown && maxScroll > 0 && window.scrollY >= maxScroll - 2 && !atriumTimer) {
+        document.body.classList.add('is-entering-atrium');
+        atriumTimer = window.setTimeout(() => { window.location.href = './contact.html'; }, 650);
+      } else if (window.scrollY < maxScroll - 120 && atriumTimer) {
+        window.clearTimeout(atriumTimer);
+        atriumTimer = null;
+        document.body.classList.remove('is-entering-atrium');
+      }
+      previousScrollY = window.scrollY;
+    }, { passive: true });
+  </script>
+  <script type="module" src="./artifact-sculpt.js?v=8"></script>
+  <script type="module" src="./logo-sculpt.js?v=2"></script>
+</body>
+</html>

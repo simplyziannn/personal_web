@@ -1,0 +1,12 @@
+.recruiter-bar{
+  position:fixed;z-index:140;top:13px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;padding:5px;border:1px solid rgba(81,61,47,.14);
+  border-radius:999px;background:rgba(250,245,236,.78);backdrop-filter:blur(18px) saturate(1.2);
+  box-shadow:0 10px 34px rgba(63,44,29,.1)
+}
+.recruiter-bar a{padding:9px 13px;border-radius:999px;color:#252738;text-decoration:none;font:750 .72rem/1 Inter,ui-sans-serif,system-ui,sans-serif;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .2s ease}
+.recruiter-bar a:hover,.recruiter-bar a:focus-visible{background:#252738;color:#fff;transform:translateY(-1px);outline:none}
+.recruiter-bar a[aria-current="page"]{background:rgba(197,139,69,.15);color:#825020}
+@media(max-width:760px){.recruiter-bar{top:82px;width:max-content;max-width:calc(100vw - 12px);justify-content:center;gap:2px;padding:4px}.recruiter-bar a{padding:8px 7px;font-size:.62rem}}
+@media(max-width:390px){.recruiter-bar a{padding-inline:6px;font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){.recruiter-bar a{transition:none}}

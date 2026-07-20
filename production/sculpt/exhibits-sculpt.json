@@ -1,0 +1,774 @@
+{
+  "schemaVersion": "4.0",
+  "manifestRevision": 2,
+  "targetName": "Curated Roman Project Artifacts",
+  "targetId": "curated-roman-project-artifacts",
+  "sourceImage": "production/sculpt/references/hallway-clay-style.png",
+  "globalSpec": {
+    "targetName": "Curated Roman Project Artifacts",
+    "targetId": "curated-roman-project-artifacts",
+    "schemaVersion": "3.1",
+    "specRevision": 1,
+    "intendedUse": "browser-prop",
+    "qualityProfile": "balanced",
+    "sourceImage": "production/sculpt/references/hallway-clay-style.png",
+    "viewHypothesisPolicy": {
+      "enabled": false,
+      "generator": "built-in-imagegen",
+      "promptVersion": "identity-turnaround-v1",
+      "requiredViews": [],
+      "allowedUse": "planning-veto",
+      "acceptanceAuthority": false,
+      "generationContract": "Preserve the exact object identity, proportions, parts, materials, and scale; generate only the named unseen view on a neutral background; do not redesign or add parts.",
+      "manifestPath": "",
+      "manifestSha256": "",
+      "cacheKey": ""
+    },
+    "suitability": "conditional",
+    "scores": {
+      "object_isolation": 0.72,
+      "silhouette_readability": 0.86,
+      "depth_inference": 0.68,
+      "primitive_decomposition": 0.9,
+      "material_procedurality": 0.9,
+      "occlusion_risk": 0.25,
+      "interaction_fit": 0.94
+    },
+    "preSpecAssessment": {
+      "objectClass": {
+        "primaryType": "stylized museum icon set",
+        "formLanguage": [
+          "rounded clay",
+          "simplified Roman bronze",
+          "symbolic hard-surface"
+        ],
+        "structureKind": [
+          "five independent compound props",
+          "intentional assembled solids"
+        ],
+        "motionPotential": [
+          "whole-object slow rotation",
+          "hover bob"
+        ],
+        "materialFamilies": [
+          "aged bronze",
+          "warm ceramic clay",
+          "dark enamel",
+          "soft emissive accent"
+        ],
+        "notes": "The screenshots are authoritative for scale, softness, palette and material language. The five project symbols are authored approximations; unseen backs are intentionally simple and near-symmetrical."
+      },
+      "complexity": {
+        "tier": "moderate",
+        "scores": {
+          "silhouetteComplexity": 0.58,
+          "componentCount": 0.7,
+          "hierarchyDepth": 0.35,
+          "repetitionDensity": 0.32,
+          "materialLayerCount": 0.5,
+          "localDetailDensity": 0.42,
+          "occlusionRisk": 0.25,
+          "actionReadinessNeed": 0.25
+        },
+        "estimatedCounts": {
+          "macroComponents": 5,
+          "mesoComponents": 18,
+          "microFeatureGroups": 5,
+          "materialLayers": 4,
+          "repetitionSystems": 2
+        },
+        "reasoning": [
+          "Moderate is sufficient because every prop is a compact museum symbol viewed inside a 260–360px interactive plaque, not a full-screen hero model.",
+          "Silhouette clarity and material cohesion matter more than hidden detail."
+        ]
+      },
+      "specDepthDecision": {
+        "requiredDepth": "moderate",
+        "minimumComponentLevels": [
+          "macro",
+          "meso",
+          "micro"
+        ],
+        "needsRepetitionSystems": true,
+        "needsMaterialLocalOverrides": true,
+        "needsMultipleReviewViews": false,
+        "needsActionReadyHierarchy": false,
+        "rationale": "Use simple named assemblies, rounded silhouettes and repeated small details while keeping each prop below the real-time plaque budget."
+      },
+      "specializedRegions": {
+        "status": "none",
+        "notes": "No faces, hands, fibers, liquids or deformable surfaces are required.",
+        "regions": []
+      },
+      "unknownsToResolveBeforeImplementation": [
+        "The screenshot does not show the backs or undersides; author them as clean, near-symmetrical museum-prop surfaces.",
+        "TarotCarrot has no supplied brand artwork; use a generic carved sun-and-carrot oracle motif without text."
+      ]
+    },
+    "surfaceTopologyPlan": {
+      "status": "planned",
+      "reason": "All five symbols are rigid stylized props with intentional seams between recognizable subassemblies.",
+      "decisionRule": "Classify each visible system as continuous sculpt, intentional assembly, conforming shell, embedded relief, host-bound fiber, or material-only before modules.",
+      "groups": [
+        {
+          "id": "featured-artifact-assemblies",
+          "strategy": "assembled-solid",
+          "ownerModuleId": "featured-artifacts",
+          "regions": [
+            "UNOVA financial orb",
+            "HLF automation gears",
+            "Ascent compass stair",
+            "TarotCarrot oracle card",
+            "UncleGoWhere travel globe"
+          ],
+          "componentRefs": [
+            "unova-orb",
+            "hlf-gears",
+            "ascent-compass",
+            "tarotcarrot-card",
+            "unclegowhere-globe"
+          ],
+          "materialRefs": [],
+          "requiredTopology": "intentional-separate-parts",
+          "separationReason": "Each symbol is a rigid icon assembled from visually distinct pieces and shown one at a time.",
+          "rationale": "Intentional seams preserve readability and make the real-time props easy to animate and optimize.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "confidence": 0.88
+        }
+      ]
+    },
+    "qualityContract": {
+      "qualityBar": "moderate",
+      "qualityProfile": "balanced",
+      "definitionOfDone": [
+        "All five symbols read immediately at plaque size, share the screenshot's rounded clay-and-bronze material language, rotate smoothly, and stay within the real-time browser budget."
+      ],
+      "minimumSpecDepth": {
+        "macroComponents": 1,
+        "mesoComponents": 2,
+        "microFeatureGroups": 1,
+        "materialLayers": 2,
+        "repetitionSystems": 2,
+        "reviewViewpoints": 1
+      },
+      "featureGroups": [
+        {
+          "id": "overall-silhouette",
+          "name": "Overall silhouette and proportions",
+          "required": true,
+          "qualityCriteria": [
+            "Bounding shape, negative space, and main mass ratios are explicit."
+          ],
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "failureModes": [
+            "The model reads as a generic placeholder."
+          ]
+        },
+        {
+          "id": "primary-structure",
+          "name": "Primary structure and attachments",
+          "required": true,
+          "qualityCriteria": [
+            "Major parts, hierarchy, joints, and contacts are explicit."
+          ],
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "failureModes": [
+            "Parts float, intersect accidentally, or use the wrong hierarchy."
+          ]
+        },
+        {
+          "id": "reference-lookdev",
+          "name": "Material, surface, lighting, and contact shadow",
+          "required": true,
+          "qualityCriteria": [
+            "Color and light response remain believable under review lighting."
+          ],
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "failureModes": [
+            "The object looks flat, uniformly plastic, or detached from the ground."
+          ]
+        }
+      ],
+      "visualDeltaChecks": [
+        "silhouette and proportion delta",
+        "structure and attachment delta",
+        "material and lighting delta"
+      ],
+      "antiShallowSpecRules": [
+        "Do not generate blockout before the integrated pre-spec fields and silhouette are filled.",
+        "Do not continue a visual pass without a hash-bound comparison manifest and artifact-bound AI review.",
+        "Do not lower global or pass-specific thresholds from a review command.",
+        "Do not mark optimization complete without measured metrics and a fresh no-regression visual review."
+      ]
+    },
+    "terminologyProfile": {
+      "domain": "real-time procedural Three.js asset",
+      "geometryTerms": [
+        "silhouette",
+        "proportion",
+        "primitive",
+        "bevel",
+        "taper",
+        "attachment"
+      ],
+      "materialTerms": [
+        "albedo",
+        "roughness",
+        "metalness",
+        "normal",
+        "ambient occlusion"
+      ],
+      "lightingTerms": [
+        "key light",
+        "fill light",
+        "environment light",
+        "contact shadow"
+      ],
+      "descriptionRule": "Pair plain-language observations with measurable geometry, material, or light parameters."
+    },
+    "qualityTargets": {
+      "targetFidelity": 0.7,
+      "mustMatch": [
+        "five distinct readable silhouettes",
+        "rounded handcrafted proportions",
+        "recognizable project symbolism",
+        "warm clay and aged-bronze response"
+      ],
+      "niceToHave": [
+        "micro wear",
+        "secondary lighting match"
+      ],
+      "reviewViewpoints": [
+        "reference"
+      ],
+      "diagnosticTargets": {
+        "silhouetteIou": 0.75,
+        "maximumCentroidDelta": 0.05,
+        "maximumAspectRatioDelta": 0.08,
+        "minimumDetailEnergyRatio": 0.65,
+        "minimumEdgeDensityRatio": 0.2,
+        "minimumHistogramIntersection": 0.25,
+        "maximumMeanColorDelta": 0.55,
+        "minimumHighlightCoverageRatio": 0.05,
+        "minimumHighlightEnergyRatio": 0.05,
+        "acceptanceAuthority": false,
+        "guardrailMode": "veto-only"
+      }
+    },
+    "selfCorrectLoop": {
+      "enabled": true,
+      "reviewAfterPasses": [
+        "blockout",
+        "form",
+        "lookdev",
+        "optimization"
+      ],
+      "allowedActions": [
+        "continue",
+        "refine-spec",
+        "refine-code",
+        "refine-batch",
+        "request-input",
+        "stop"
+      ],
+      "specRefineTriggers": [
+        "missing part",
+        "wrong primitive",
+        "wrong proportions",
+        "reference ambiguity"
+      ],
+      "codeRefineTriggers": [
+        "render mismatch",
+        "runtime failure",
+        "performance budget exceeded"
+      ],
+      "stopCriteria": [
+        "quality target reached",
+        "remaining gap needs a better reference or manual art"
+      ],
+      "visualAcceptance": {
+        "reviewer": "ai-vision",
+        "threshold": 0.7,
+        "minimumAiVisionScore": 0.7,
+        "comparisonArtifactRequired": true,
+        "layerScoresRequired": true,
+        "codePixelDiffIsAcceptanceAuthority": false,
+        "requiredLayerScores": [],
+        "scoringRule": "AI vision reviews the full no-crop contact sheet; pass-specific scores are defined in buildPasses.",
+        "featureReviewPolicy": {
+          "enabled": true,
+          "reviewUnit": "multi-view-contact-sheet",
+          "maxCriticalFeaturesPerPass": 8,
+          "maxImportantFeaturesPerPass": 3,
+          "criticalDefaultThreshold": 0.8,
+          "importantAverageThreshold": 0.65,
+          "adaptiveEscalation": true,
+          "singleImagePairOnly": false,
+          "selectionRule": "Review a few identity-defining semantic systems, not every mesh; visible face and hand regions remain independent critical targets."
+        }
+      },
+      "screenshotPolicy": {
+        "requiredForPasses": [
+          "blockout",
+          "form",
+          "lookdev"
+        ],
+        "preferredCapture": "in-app-browser-screenshot",
+        "fallbackCapture": "user-supplied-screenshot-path",
+        "minimumEvidence": "Required reference/render views, one combined sheet, AI scores, and critique.",
+        "reviewPairRule": "Use matching camera and framing whenever possible.",
+        "acceptanceAuthority": "AI vision plus pass-specific semantic gates."
+      }
+    },
+    "featureReviewTargets": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "tier": "critical",
+        "passIds": [
+          "blockout",
+          "form",
+          "optimization"
+        ],
+        "minimumScore": 0.8,
+        "mustPass": true,
+        "componentRefs": [
+          "root"
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and attachment system",
+        "tier": "critical",
+        "passIds": [
+          "form",
+          "optimization"
+        ],
+        "minimumScore": 0.8,
+        "mustPass": true,
+        "componentRefs": [
+          "root"
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference material and lighting response",
+        "tier": "critical",
+        "passIds": [
+          "lookdev",
+          "optimization"
+        ],
+        "minimumScore": 0.75,
+        "mustPass": true,
+        "componentRefs": [
+          "root"
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    ],
+    "actionReadiness": {
+      "enabled": false,
+      "contract": "Use stable named pivot nodes; add sockets, colliders, and destruction data only when the intended use needs them.",
+      "defaultRigType": "stable-static-root",
+      "rootMotionNode": "root",
+      "requiredComponentFields": [
+        "id",
+        "parent",
+        "transform",
+        "actionProfile"
+      ],
+      "transformChannels": [
+        "translate",
+        "rotate",
+        "scale",
+        "visibility"
+      ],
+      "authoringRules": [
+        "Do not merge independently movable parts."
+      ],
+      "destructionPolicy": {
+        "defaultBreakable": false
+      }
+    },
+    "assumptions": [],
+    "coordinateFrame": {
+      "front": "camera-facing side in the reference",
+      "up": "image up",
+      "scaleReference": "relative unit scale until first render review"
+    },
+    "silhouette": {
+      "boundingShape": "Each prop fits a centered near-square display volume with a stable visual base and clear upper silhouette.",
+      "aspectRatios": [
+        "per-prop width:height between 0.75:1 and 1.25:1"
+      ],
+      "symmetry": "Mostly bilateral or radial; deliberate asymmetry is limited to the Ascent stair and orbiting travel plane.",
+      "dominantCurves": [
+        "rounded globe arcs",
+        "soft bevelled card corners",
+        "broad gear teeth",
+        "sweeping compass needle"
+      ],
+      "negativeSpaces": [
+        "gear gaps",
+        "open compass ring",
+        "air gap around orbiting plane",
+        "stair step rhythm"
+      ],
+      "landmarks": [
+        "UNOVA asset rings",
+        "HLF meshing gears",
+        "Ascent upward arrow-stair",
+        "TarotCarrot carved oracle face",
+        "UncleGoWhere travel orbit"
+      ]
+    },
+    "viewEvidence": [
+      {
+        "id": "full-object",
+        "view": "primary",
+        "imageRegion": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1.0,
+          "height": 1.0,
+          "units": "normalized"
+        },
+        "observations": [
+          "Existing museum props use simplified toy-like geometry with rounded edges and broad silhouettes.",
+          "Warm ivory architecture is paired with muted bronze, terracotta and charcoal accents.",
+          "Artifacts float above stone pedestals and are lit by warm lateral lantern light.",
+          "Fine texture is subordinate to readable form; contact shadow and highlight rolloff sell the clay material."
+        ],
+        "confidence": 0.86
+      }
+    ],
+    "componentTree": [
+      {
+        "id": "root",
+        "name": "Curated Roman Project Artifacts",
+        "componentType": "assembly",
+        "level": "macro",
+        "role": "assembly-root",
+        "importance": 1.0,
+        "confidence": 1.0,
+        "parent": null,
+        "attachment": null,
+        "transform": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "actionProfile": {
+          "animationRole": "root",
+          "pivot": {
+            "mode": "center",
+            "localPosition": [
+              0,
+              0,
+              0
+            ],
+            "axis": [
+              0,
+              1,
+              0
+            ],
+            "confidence": 1.0
+          },
+          "transformChannels": {
+            "translate": true,
+            "rotate": true,
+            "scale": true,
+            "bend": false,
+            "visibility": true
+          },
+          "sockets": [],
+          "collider": null,
+          "breakable": false
+        },
+        "evidenceRefs": [
+          "full-object"
+        ]
+      }
+    ],
+    "materials": [],
+    "repetitionSystems": [],
+    "buildPasses": [
+      {
+        "id": "blockout",
+        "label": "Khối chính",
+        "objective": "Match overall silhouette, framing, mass, and proportions before detail.",
+        "componentRefs": [
+          "root"
+        ],
+        "acceptance": [
+          "Reference and render preserve the same overall silhouette.",
+          "Primary masses and framing are correct before detail work."
+        ],
+        "evidenceType": "visual",
+        "requiredViews": [
+          "primary"
+        ],
+        "diagnosticViews": [
+          "three-quarter",
+          "side"
+        ],
+        "requiredLayerScores": {
+          "silhouette": 0.72
+        }
+      },
+      {
+        "id": "form",
+        "label": "Hoàn thiện hình",
+        "objective": "Refine shape and the visible forms needed by the selected complexity tier.",
+        "componentRefs": [
+          "root"
+        ],
+        "acceptance": [
+          "Macro and required meso forms match the reference.",
+          "Proportion and attachment errors found in the previous review are resolved."
+        ],
+        "evidenceType": "visual",
+        "requiredViews": [
+          "primary"
+        ],
+        "diagnosticViews": [
+          "three-quarter",
+          "side"
+        ],
+        "requiredLayerScores": {
+          "silhouette": 0.76,
+          "structure": 0.74
+        }
+      },
+      {
+        "id": "lookdev",
+        "label": "Vật liệu và ánh sáng",
+        "objective": "Validate color, material response, surface detail, lighting, and contact shadows together.",
+        "componentRefs": [
+          "root"
+        ],
+        "acceptance": [
+          "Materials preserve the reference palette and roughness response.",
+          "Lighting reveals form without baking the source lighting into albedo.",
+          "Contact shadows and surface detail remain believable at the target view."
+        ],
+        "evidenceType": "visual",
+        "requiredViews": [
+          "reference"
+        ],
+        "diagnosticViews": [
+          "three-quarter",
+          "side"
+        ],
+        "requiredLayerScores": {
+          "material": 0.72,
+          "lighting": 0.68
+        }
+      },
+      {
+        "id": "optimization",
+        "label": "Hiệu năng",
+        "objective": "Measure the final model against the real-time budget without changing its look.",
+        "componentRefs": [
+          "root"
+        ],
+        "acceptance": [
+          "Measured FPS meets the target on the declared test device.",
+          "Draw calls and triangle count stay within the declared budget.",
+          "A nearby unchanged workflow still loads after optimization."
+        ],
+        "evidenceType": "metrics",
+        "requiredMetrics": [
+          "fps",
+          "drawCalls",
+          "triangles"
+        ],
+        "requiredArtifacts": [
+          "performanceCapture"
+        ],
+        "requiredPostOptimizationVisualReview": true,
+        "requiredViews": [
+          "reference"
+        ],
+        "diagnosticViews": [
+          "three-quarter",
+          "side"
+        ],
+        "requiredLayerScores": {
+          "silhouette": 0.76,
+          "material": 0.72,
+          "lighting": 0.68
+        },
+        "visualBaselinePassId": "lookdev",
+        "maximumVisualRegression": 0.02
+      }
+    ],
+    "lookDevTargets": {
+      "qualityPriority": "balanced",
+      "materialPass": {
+        "minimumTextureResolution": 1024,
+        "independentMapChannels": [
+          "albedo",
+          "roughness",
+          "height",
+          "normal",
+          "ambient-occlusion"
+        ],
+        "referencePbrExtraction": {
+          "requiredWhenSourceImagePresent": false,
+          "targetThreshold": 0.7,
+          "stopOnLowConfidence": true,
+          "acceptedLimitation": "Single-image maps are inferred material evidence, not photogrammetry."
+        }
+      },
+      "lightingPass": {
+        "requiredTerms": [
+          "key/fill/environment",
+          "exposure/tone",
+          "contact shadow"
+        ]
+      },
+      "screenshotReview": [
+        "reference"
+      ]
+    },
+    "reviewHistory": [],
+    "lodPlan": [
+      {
+        "tier": "near",
+        "distance": 0,
+        "strategy": "full accepted model"
+      },
+      {
+        "tier": "far",
+        "distance": 30,
+        "strategy": "merge static parts and reduce non-silhouette detail"
+      }
+    ],
+    "performanceBudget": {
+      "qualityPriority": "balanced",
+      "targetTriangles": 250000,
+      "maxDrawCalls": 120,
+      "textureSize": 2048,
+      "fpsTarget": 60,
+      "optimizationPolicy": "Measure first; optimize without removing reference-critical features."
+    },
+    "lightingFromPhoto": [],
+    "proceduralStrategy": [
+      "Match silhouette and proportions.",
+      "Add only the structure required by complexity.",
+      "Validate material, surface, lighting, and contact shadow together.",
+      "Run interaction and performance checks only when relevant."
+    ],
+    "risks": [],
+    "sculptPipeline": {
+      "passGateMode": "adaptive-sequential",
+      "passOrder": [
+        "blockout",
+        "form",
+        "lookdev",
+        "optimization"
+      ],
+      "currentPass": "blockout",
+      "completedPasses": [],
+      "lastCompletedPass": "",
+      "state": "ready",
+      "latestAction": "",
+      "pendingCorrectionBatch": {},
+      "refinementBudget": {
+        "maximumBatches": 2,
+        "usedBatches": 0,
+        "remainingBatches": 2,
+        "exhausted": false,
+        "maximumStrategyResets": 1,
+        "usedStrategyResets": 0,
+        "remainingStrategyResets": 1
+      },
+      "blockedReason": "",
+      "gateFailures": [],
+      "nextRequiredEvidence": [
+        "Reference and render preserve the same overall silhouette.",
+        "Primary masses and framing are correct before detail work.",
+        "hash-bound reference + render comparison manifest for every required view",
+        "one artifact-bound AI reviewer record with critique and required scores",
+        "latest review action=continue for the current spec"
+      ],
+      "specHash": "13f1ac31846bed1c"
+    },
+    "reviewGovernance": {
+      "independentContextRequired": true,
+      "reviewerRole": "independent-reviewer",
+      "verdictArtifactRequired": true,
+      "builderMayNotOverrideVerdict": true
+    }
+  },
+  "assemblyContract": {
+    "rootComponentId": "root",
+    "coordinateFrame": {
+      "front": "camera-facing side in the reference",
+      "up": "image up",
+      "scaleReference": "relative unit scale until first render review"
+    },
+    "units": "relative",
+    "connectorRule": "Cross-module parenting must target root or a connector exported by a dependency.",
+    "invariants": [
+      "component, material, repetition, feature, and region ids are globally unique",
+      "module internals may change without invalidating dependants when exported connectors stay stable"
+    ]
+  },
+  "coverageContract": {
+    "assemblyFeatureGroups": [],
+    "rule": "Every required feature group has exactly one owner mode: one visual module or the assembled-pass gate."
+  },
+  "modulePolicy": {
+    "order": "highest-risk-ready-first",
+    "failClosed": true,
+    "cache": "content-and-interface-hash",
+    "finalAssemblyRequiresAcceptedModules": true
+  },
+  "modules": [
+    {
+      "id": "featured-artifacts",
+      "path": "exhibits-sculpt.modules/featured-artifacts.json",
+      "role": "Own the five independently selectable Roman museum project symbols and their shared browser-ready material language.",
+      "riskScore": 72.0,
+      "riskTier": "high",
+      "dependsOn": [],
+      "gateType": "visual",
+      "covers": [
+        "overall-silhouette",
+        "primary-structure",
+        "reference-lookdev"
+      ],
+      "required": true
+    }
+  ]
+}

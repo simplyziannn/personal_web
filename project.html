@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project Artifact — Zi An Lee</title><meta name="description" content="Project artifact from Zi An Lee's portfolio museum.">
+  <link rel="stylesheet" href="./static.css?v=14">
+  <link rel="stylesheet" href="./logo-sculpt.css?v=2">
+  <link rel="stylesheet" href="./project-artifact.css?v=3">
+  <link rel="stylesheet" href="./recruiter-bar.css?v=2">
+</head>
+<body>
+  <nav class="recruiter-bar" aria-label="Recruiter shortcuts"><a href="./index.html#work" aria-current="page">Work</a><a href="./contact.html#experience">Experience</a><a href="./contact.html#contact">Contact</a></nav>
+  <nav class="static-nav"><a class="static-brand" href="./index.html"><i class="logo-sculpt"></i>ZI AN LEE</a><div class="static-nav__links"><a class="pill-link" href="./index.html">Back to museum</a><a class="pill-link pill-link--dark" href="./contact.html">Connect</a></div></nav>
+  <main id="project"></main>
+  <footer class="page-footer"><span>Zi An Lee · Computer Engineering, AI, FinTech &amp; Infrastructure</span><a href="./index.html">Return to the museum</a></footer>
+  <script src="./project-data.js?v=5"></script>
+  <script>
+    const key = new URLSearchParams(location.search).get('project') || 'fintech';
+    const p = window.PROJECTS[key] || window.PROJECTS.fintech;
+    document.title = `${p.name} — Zi An Lee`;
+    document.querySelector('meta[name="description"]').content = p.tagline;
+    document.documentElement.style.setProperty('--artifact-a', p.colors[0]);
+    document.documentElement.style.setProperty('--artifact-b', p.colors[1]);
+    const artifactMarkup = key === 'fintech'
+      ? `<div class="artifact-stage artifact-stage--unova" aria-label="Interactive UNOVA wealth constellation">
+          <canvas class="unova-globe" aria-label="Drag to rotate the portfolio system. Select an asset node to inspect it." tabindex="0"></canvas>
+          <div class="unova-globe__signal" aria-hidden="true"><span>WEALTH CONSTELLATION</span><b>ONE SYSTEM · FIVE ASSET WORLDS</b></div>
+          <div class="unova-globe__readout" aria-live="polite">
+            <span class="unova-globe__readout-kicker">SELECTED ASSET</span><strong>Equities</strong><b>42%</b><p>Growth engine · global exposure</p>
+          </div>
+          <div class="unova-globe__hint" aria-hidden="true">DRAG TO ORBIT · SELECT A NODE</div>
+          <div class="unova-globe__legend" aria-label="Portfolio asset controls">
+            <button type="button" data-asset="equities" class="is-active" style="--signal:#58a9ff">Equities</button><button type="button" data-asset="bonds" style="--signal:#9a7cff">Bonds</button><button type="button" data-asset="real-assets" style="--signal:#d27a58">Real assets</button><button type="button" data-asset="digital" style="--signal:#35d6b7">Digital</button><button type="button" data-asset="commodities" style="--signal:#f5b51b">Commodities</button>
+          </div>
+        </div>`
+      : `<div class="artifact-stage" aria-label="Abstract clay artifact for ${p.name}"><div class="artifact"></div></div>`;
+    document.getElementById('project').innerHTML = `
+      <section class="project-hero">
+        <div class="project-hero__copy"><span class="kicker">${p.category}</span><h1 class="project-title">${p.name}</h1><p class="project-tagline">${p.tagline}</p><div class="status-row"><span>${p.visibility}</span><span>Portfolio artifact</span></div></div>
+        ${artifactMarkup}
+      </section>
+      <section class="project-body"><div class="project-grid">
+        <article class="project-card project-card--wide"><span class="kicker">Overview</span><h2>What it is</h2><p>${p.overview}</p></article>
+        <article class="project-card"><span class="kicker">The challenge</span><h2>Why it matters</h2><p>${p.problem}</p></article>
+        <article class="project-card"><span class="kicker">The build</span><h2>How it works</h2><p>${p.solution}</p></article>
+        <article class="project-card"><span class="kicker">Tools</span><h2>Technology</h2><ul class="chip-list">${p.tech.map(x=>`<li>${x}</li>`).join('')}</ul></article>
+        <article class="project-card"><span class="kicker">Evidence</span><h2>Highlights</h2><ul class="highlight-list">${p.highlights.map(x=>`<li>${x}</li>`).join('')}</ul></article>
+        <article class="project-card project-card--wide"><span class="kicker">Next room</span><h2>Continue exploring</h2><p>${p.github ? 'The source repository is public, or you can return to the museum for another artifact.' : 'This work is private or collaborative. Connect with me for the case study, or return to the museum.'}</p><div class="project-actions">${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">View GitHub repository</a>` : `<a href="./contact.html">Ask about this project</a>`}<a href="./index.html">Back to museum</a></div></article>
+      </div></section>`;
+  </script>
+  <script type="module" src="./project-artifact.js?v=2"></script>
+  <script type="module" src="./logo-sculpt.js?v=2"></script>
+  <script type="module" src="./sliding-actions.js?v=1"></script>
+</body>
+</html>

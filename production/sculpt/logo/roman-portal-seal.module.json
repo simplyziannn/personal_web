@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "logo-sculpt-module-1.0",
+  "moduleId": "roman-portal-seal",
+  "role": "Own the procedural museum navigation seal and its interaction-safe runtime.",
+  "implementationFiles": ["logo-sculpt.js", "logo-sculpt.css"],
+  "ownershipMarker": "export const SCULPT_MODULE_ID = 'roman-portal-seal';",
+  "componentTree": [
+    {"id": "coin-host", "geometry": "32-sided cylinder", "material": "aged bronze", "role": "silhouette and depth"},
+    {"id": "inset-field", "geometry": "32-sided cylinder", "material": "dark bronze", "role": "contrast field"},
+    {"id": "portal-arch", "geometry": "bevelled extruded shape", "material": "warm sandstone", "role": "primary brand symbol"},
+    {"id": "oculus", "geometry": "sphere", "material": "amber emissive", "role": "focal point"},
+    {"id": "ascending-steps", "geometry": "three bevelled extrusions", "material": "bronze and gold", "role": "forward-motion motif"}
+  ],
+  "lighting": ["warm hemisphere fill", "amber key", "cool rim"],
+  "interaction": "Subtle hover turn and idle float; motion disabled when reduced motion is requested.",
+  "approximations": ["Hidden rear surfaces are simple and near-symmetrical because the navigation view is front-biased."],
+  "reviewViews": ["navigation-size desktop", "navigation-size mobile"]
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Connect with Zi An Lee</title><meta name="description" content="Experience, focus areas and contact links for Zi An Lee, Computer Engineering undergraduate and software builder.">
+  <link rel="stylesheet" href="./static.css?v=14">
+  <link rel="stylesheet" href="./logo-sculpt.css?v=2">
+  <link rel="stylesheet" href="./recruiter-bar.css?v=3">
+</head>
+<body class="atrium-page">
+  <div class="atrium-ambience" aria-hidden="true"><i class="atrium-orbit atrium-orbit--one"></i><i class="atrium-orbit atrium-orbit--two"></i><i class="atrium-orb atrium-orb--one"></i><i class="atrium-orb atrium-orb--two"></i></div>
+  <nav class="static-nav"><a class="static-brand" href="./index.html"><i class="logo-sculpt"></i>ZI AN LEE</a></nav>
+  <nav class="recruiter-bar" aria-label="Primary navigation"><a href="./index.html">Museum</a><a href="./index.html#work">Work</a><a href="#experience">Experience</a><a href="./project.html?project=fintech">Featured project</a><a href="#contact" aria-current="page">Contact</a></nav>
+  <nav class="section-rail" aria-label="Profile sections">
+    <a href="#experience" class="is-active"><span>Experience</span><i></i></a>
+    <a href="#education"><span>Education</span><i></i></a>
+    <a href="#hackathons"><span>Hackathons</span><i></i></a>
+  </nav>
+  <main>
+    <section class="contact-hero" id="contact">
+      <div class="contact-hero__copy"><span class="kicker">THE FINAL ATRIUM</span><h1 class="contact-title">Let’s build<br>what’s next.</h1><p class="contact-lead">I’m a Computer Engineering undergraduate in Singapore building across financial technology, artificial intelligence, infrastructure and operational automation.</p><div class="project-actions"><a href="https://www.linkedin.com/in/zi-an-lee/">Connect on LinkedIn</a><a href="https://github.com/simplyziannn">Explore GitHub</a><a href="mailto:leezian44@gmail.com">Start a conversation</a></div></div>
+      <aside class="contact-panel"><span class="kicker">AT A GLANCE</span><h2>Zi An Lee</h2><div class="contact-stat"><span>Current</span><strong>Summer Analyst<br>Bank of America</strong></div><div class="contact-stat"><span>Education</span><strong>NTU Computer Engineering<br>Elective Focus in AI</strong></div><div class="contact-stat"><span>Email</span><strong><a href="mailto:leezian44@gmail.com">leezian44@gmail.com</a></strong></div><div class="contact-stat"><span>Based in</span><strong>Singapore</strong></div></aside>
+    </section>
+    <section class="timeline" id="experience"><h2>Experience</h2>
+      <article class="timeline-item"><time>JUN 2026 · PRESENT</time><div><h3>Bank of America — Summer Analyst</h3><p>Portfolio and Infrastructure Delivery · Singapore · On-site</p></div></article>
+      <article class="timeline-item"><time>MAR · MAY 2026</time><div><h3>GB Helios — Technology Executive</h3><p>Built a cloud-based agentic AI automation platform.</p></div></article>
+      <article class="timeline-item"><time>JUL · DEC 2025</time><div><h3>GB Helios — Technology Executive</h3><p>Developed backend automation between stakeholders, reducing the operations team’s workload by 95%.</p></div></article>
+      <article class="timeline-item"><time>MAY · JUL 2025</time><div><h3>GB Helios — IT Project Manager Intern</h3><p>Integrated APIs and automated workflows for banking and brokerage operations, reducing manual effort and error rates. Implemented CI/CD smoke testing to improve service uptime and detect API issues early.</p></div></article>
+      <article class="timeline-item"><time>DEC 2020 · OCT 2021</time><div><h3>mVizn — Assistant Software Engineer</h3><p>Worked on artificial intelligence for port security, improving AI precision, tagging and sorting images, and supporting site acceptance testing · Singapore · Hybrid</p></div></article>
+      <article class="timeline-item"><time>MAR · OCT 2020</time><div><h3>mVizn — Intern</h3><p>Worked on artificial intelligence for port security, including AI precision improvements, image tagging and sorting, and site acceptance testing · Singapore · Hybrid</p></div></article>
+    </section>
+    <section class="timeline timeline--education" id="education"><h2>Education</h2>
+      <article class="timeline-item"><time>AUG 2023 · JAN 2027</time><div><h3>Nanyang Technological University Singapore</h3><p>Bachelor of Engineering in Computer Engineering · Elective Focus in Artificial Intelligence</p><ul><li>Election Officer, AY25/26</li><li>8th Hall Council — Financial Controller, AY24/25</li><li>7th Hall Council — Sports Director, AY23/24</li><li>Hall Freshman Orientation Programme — Group Leader, AY24/25</li></ul></div></article>
+      <article class="timeline-item"><time>2018 · 2021</time><div><h3>Singapore Polytechnic</h3><p>Diploma in Computer Engineering</p></div></article>
+    </section>
+    <section class="timeline timeline--hackathons" id="hackathons"><h2>Hackathons</h2>
+      <article class="timeline-item"><time>1ST · 2025</time><div><h3>BioHackathon 2025</h3></div></article>
+      <article class="timeline-item"><time>FINALIST · 2026</time><div><h3>FinTech Innovators’ Hackathon 2026</h3></div></article>
+      <article class="timeline-item"><time>TOP 10 · 2026</time><div><h3>AWS × Cognizant × SGCC Vibe Coding Ideathon 2026</h3></div></article>
+      <article class="timeline-item"><time>2026</time><div><h3>TechFest 2026</h3></div></article>
+      <article class="timeline-item"><time>2025</time><div><h3>PSA Code Sprint 2025</h3></div></article>
+    </section>
+  </main>
+  <footer class="page-footer"><span>Thanks for walking through the museum.</span><span>LinkedIn · GitHub · Singapore</span></footer>
+  <script type="module" src="./logo-sculpt.js?v=2"></script>
+  <script type="module" src="./atrium-ui.js?v=3"></script>
+  <script type="module" src="./sliding-actions.js?v=1"></script>
+  <script>
+    const profileSections = [...document.querySelectorAll('.timeline[id]')];
+    const profileLinks = [...document.querySelectorAll('.section-rail a')];
+    const recruiterLinks = [...document.querySelectorAll('.recruiter-bar a')];
+    const setActiveSection = id => profileLinks.forEach(link => link.classList.toggle('is-active', link.hash === `#${id}`));
+    const setRecruiterSection = id => recruiterLinks.forEach(link => {
+      if (link.hash === `#${id}`) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    let sectionTick = false;
+    const updateActiveSection = () => {
+      const marker = window.scrollY + window.innerHeight * .8;
+      let current = profileSections[0];
+      profileSections.forEach(section => { if (section.offsetTop <= marker) current = section; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) current = profileSections.at(-1);
+      setActiveSection(current.id);
+      const experienceTop = document.getElementById('experience').offsetTop;
+      setRecruiterSection(window.scrollY + window.innerHeight * .45 >= experienceTop ? 'experience' : 'contact');
+      sectionTick = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!sectionTick) { sectionTick = true; requestAnimationFrame(updateActiveSection); }
+    }, { passive: true });
+    updateActiveSection();
+    profileLinks.forEach(link => link.addEventListener('click', () => setActiveSection(link.hash.slice(1))));
+  </script>
+</body>
+</html>

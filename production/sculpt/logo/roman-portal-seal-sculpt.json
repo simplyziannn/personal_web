@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "logo-sculpt-1.0",
+  "targetId": "roman-portal-seal",
+  "targetName": "Roman Portal Seal",
+  "sourceImage": "/var/folders/wf/vgkv6c4n0r73c_b7pcbtbc580000gn/T/codex-clipboard-d5b0a4a1-a5ba-40fd-8a4e-343e33fb113c.png",
+  "intendedUse": "browser-prop",
+  "qualityProfile": "balanced",
+  "suitability": "conditional",
+  "sourceObservations": [
+    "The existing mark is a warm bronze rounded block beside the Zi An Lee wordmark.",
+    "No identity-bearing geometry exists in the source; the new symbol is an authored brand direction, not a reconstruction.",
+    "The museum uses warm limestone, bronze, charcoal and an oculus motif."
+  ],
+  "surfaceTopologyPlan": {
+    "status": "planned",
+    "strategy": "assembled-solid",
+    "ownerModuleId": "roman-portal-seal",
+    "systems": ["coin host", "inset field", "stone arch relief", "oculus", "ascending steps"]
+  },
+  "qualityContract": {
+    "mustMatch": [
+      "legible circular silhouette at 34–38 CSS pixels",
+      "museum-consistent Roman portal symbolism",
+      "warm bronze and limestone material separation",
+      "no layout shift and a static CSS fallback"
+    ],
+    "runtimeTargets": ["one transparent WebGL canvas", "device pixel ratio capped at 2", "low-power renderer", "reduced-motion-safe"]
+  }
+}
