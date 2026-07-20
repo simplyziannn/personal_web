@@ -10,7 +10,7 @@
 <body class="atrium-page">
   <div class="atrium-ambience" aria-hidden="true"><i class="atrium-orbit atrium-orbit--one"></i><i class="atrium-orbit atrium-orbit--two"></i><i class="atrium-orb atrium-orb--one"></i><i class="atrium-orb atrium-orb--two"></i></div>
   <nav class="static-nav"><a class="static-brand" href="./index.html"><i class="logo-sculpt"></i>ZI AN LEE</a></nav>
-  <nav class="recruiter-bar" aria-label="Primary navigation"><a href="./index.html">Museum</a><a href="./index.html#work">Work</a><a href="#experience">Experience</a><a href="./project.html?project=fintech">Featured project</a><a href="#contact" aria-current="page">Contact</a></nav>
+  <nav class="recruiter-bar" aria-label="Primary navigation"><a href="./index.html">Museum</a><a href="./index.html#work">Work</a><a href="#experience">Experience</a><a href="./project.html?project=fintech">Featured project</a><a href="#contact">Contact</a></nav>
   <nav class="section-rail" aria-label="Profile sections">
     <a href="#experience" class="is-active"><span>Experience</span><i></i></a>
     <a href="#education"><span>Education</span><i></i></a>
@@ -51,11 +51,23 @@
     const recruiterLinks = [...document.querySelectorAll('.recruiter-bar a')];
     const setActiveSection = id => profileLinks.forEach(link => link.classList.toggle('is-active', link.hash === `#${id}`));
     const setRecruiterSection = id => recruiterLinks.forEach(link => {
-      if (link.hash === `#${id}`) link.setAttribute('aria-current', 'page');
+      const activeHash = id === 'contact' ? '#contact' : '#experience';
+      if (link.hash === activeHash) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
-    let sectionTick = false;
+    let sectionTick = false, pendingHashTarget = null;
     const updateActiveSection = () => {
+      if (pendingHashTarget) {
+        const targetSection = document.getElementById(pendingHashTarget);
+        if (pendingHashTarget === 'contact') setRecruiterSection('contact');
+        else {
+          setActiveSection(pendingHashTarget);
+          setRecruiterSection('experience');
+        }
+        if (targetSection && Math.abs(targetSection.getBoundingClientRect().top) <= Math.max(120, window.innerHeight * .2)) pendingHashTarget = null;
+        sectionTick = false;
+        return;
+      }
       const marker = window.scrollY + window.innerHeight * .8;
       let current = profileSections[0];
       profileSections.forEach(section => { if (section.offsetTop <= marker) current = section; });
@@ -68,8 +80,29 @@
     window.addEventListener('scroll', () => {
       if (!sectionTick) { sectionTick = true; requestAnimationFrame(updateActiveSection); }
     }, { passive: true });
-    updateActiveSection();
-    profileLinks.forEach(link => link.addEventListener('click', () => setActiveSection(link.hash.slice(1))));
+    const syncNavigation = () => {
+      const target = location.hash.slice(1);
+      if (target === 'contact') {
+        pendingHashTarget = target;
+        setRecruiterSection('contact');
+        return;
+      }
+      else if (profileSections.some(section => section.id === target)) {
+        pendingHashTarget = target;
+        setActiveSection(target);
+        setRecruiterSection('experience');
+        return;
+      }
+      requestAnimationFrame(updateActiveSection);
+    };
+    syncNavigation();
+    requestAnimationFrame(syncNavigation);
+    window.addEventListener('hashchange', syncNavigation);
+    window.addEventListener('pageshow', syncNavigation);
+    profileLinks.forEach(link => link.addEventListener('click', () => {
+      setActiveSection(link.hash.slice(1));
+      setRecruiterSection('experience');
+    }));
   </script>
 </body>
 </html>
