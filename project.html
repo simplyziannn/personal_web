@@ -20,7 +20,7 @@
     const featuredArtifacts = {
       hlf: { label: 'LIVE WORKFLOW', title: 'AUTOMATION ENGINE', hint: 'DRAG TO INSPECT · HOVER A STAGE', items: ['Trigger', 'Validate', 'Route', 'Complete'] },
       ascent: { label: 'CAREER SIGNAL', title: 'PATHFINDING COMPASS', hint: 'DRAG TO ORIENT · SELECT A MILESTONE', items: ['Profile', 'Gap map', 'Learn', 'Launch'] },
-      tarotcarrot: { label: 'PRIVATE EXPERIMENT', title: 'THE GROWTH ORACLE', hint: 'DRAG TO TILT · REVEAL A SYMBOL', items: ['Spark', 'Root', 'Grow', 'Reveal'] },
+      tarotcarrot: { label: 'BILINGUAL TAROT', title: 'THE CHEERFUL ORACLE', hint: 'DRAG TO TILT · FOLLOW THE RITUAL', items: ['Ask', 'Ground', 'Guide', 'Explore'] },
       unclegowhere: { label: 'AGENT NETWORK', title: 'ONE TRIP · MANY SPECIALISTS', hint: 'DRAG TO ORBIT · SELECT AN AGENT', items: ['Flights', 'Stays', 'Plans', 'Reviews'] }
     };
     document.title = `${p.name} — Zi An Lee`;
@@ -29,6 +29,15 @@
     document.documentElement.style.setProperty('--artifact-b', p.colors[1]);
     document.body.dataset.project = key;
     const featured = featuredArtifacts[key];
+    const projectStoryMarkup = key === 'tarotcarrot' ? `
+      <article class="project-card project-card--wide tarot-story">
+        <div><span class="kicker">The collaboration</span><h2>Tarot reader × coder</h2><p>${p.role}</p><p class="tarot-story__note">${p.productNote}</p></div>
+        <img src="./public/assets/projects/tarotcarrot/logo.png" alt="Tarot Carrot logo" loading="lazy">
+      </article>` : '';
+    const projectMediaMarkup = p.media ? `
+      <article class="project-card project-card--wide project-evidence"><span class="kicker">Product evidence</span><h2>A bright ritual, built end to end</h2>
+        <div class="project-evidence__grid">${p.media.map((item, index) => `<figure class="project-evidence__item project-evidence__item--${index + 1}"><img src="${item.src}" alt="${item.alt}" loading="lazy"><figcaption>${String(index + 1).padStart(2,'0')} · ${item.label}</figcaption></figure>`).join('')}</div>
+      </article>` : '';
     const artifactMarkup = key === 'fintech'
       ? `<div class="artifact-stage artifact-stage--unova" aria-label="Interactive UNOVA wealth constellation">
           <canvas class="unova-globe" aria-label="Drag to rotate the portfolio system. Select an asset node to inspect it." tabindex="0"></canvas>
@@ -60,8 +69,10 @@
         <article class="project-card project-card--wide"><span class="kicker">Overview</span><h2>What it is</h2><p>${p.overview}</p></article>
         <article class="project-card"><span class="kicker">The challenge</span><h2>Why it matters</h2><p>${p.problem}</p></article>
         <article class="project-card"><span class="kicker">The build</span><h2>How it works</h2><p>${p.solution}</p></article>
+        ${projectStoryMarkup}
         <article class="project-card"><span class="kicker">Tools</span><h2>Technology</h2><ul class="chip-list">${p.tech.map(x=>`<li>${x}</li>`).join('')}</ul></article>
         <article class="project-card"><span class="kicker">Evidence</span><h2>Highlights</h2><ul class="highlight-list">${p.highlights.map(x=>`<li>${x}</li>`).join('')}</ul></article>
+        ${projectMediaMarkup}
         <article class="project-card project-card--wide"><span class="kicker">Next room</span><h2>Continue exploring</h2><p>${p.github ? 'The source repository is public, or you can return to the museum for another artifact.' : 'This work is private or collaborative. Connect with me for the case study, or return to the museum.'}</p><div class="project-actions">${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">View GitHub repository</a>` : `<a href="./contact.html">Ask about this project</a>`}<a href="./index.html">Back to museum</a></div></article>
       </div></section>`;
   </script>

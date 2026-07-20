@@ -58,13 +58,23 @@ window.PROJECTS = {
     github: 'https://github.com/simplyziannn/whatsapp-business', colors: ['#9c7044','#526d61']
   },
   tarotcarrot: {
-    name: 'TarotCarrot', category: 'Product Experiment', visibility: 'Private',
-    tagline: 'A private product experiment still taking shape.',
-    overview: 'TarotCarrot is a private software project. Its source and product details are intentionally not exposed in the public portfolio.',
-    problem: 'The project explores a focused product idea through rapid software experimentation.',
-    solution: 'The implementation and design decisions can be discussed as a private case study.',
-    tech: ['Product experimentation', 'Software prototyping'],
-    highlights: ['Private repository', 'Details available on request'], colors: ['#bd7847','#6e526f']
+    name: 'Tarot Carrot', category: 'Bilingual Product Experience', visibility: 'Public',
+    tagline: 'A playful digital tarot ritual for curious souls seeking approachable reflection.',
+    overview: 'Tarot Carrot is a functional bilingual tarot MVP that makes card reading feel closer to a cheerful game or cosy companion than an intimidating occult service. Visitors can explore the complete deck, receive an instant daily message, or intuitively select three cards for a human-prepared reading.',
+    problem: 'Traditional tarot services can feel intimidating, vague or disconnected from the digital platforms people already use. The challenge was to preserve the intention and tactility of a physical reading while making every step friendly, understandable and easy to complete online.',
+    solution: 'A multi-stage Vue experience guides the user from a personal question through an intention-setting countdown and three-card selection. Upright or reversed cards, contact details and a unique reference are securely forwarded to the reading team through Telegram, while the instant Daily Carrot Pull provides practical bilingual guidance with no form or queue.',
+    tech: ['Vue 3', 'Vite', 'JavaScript', 'Node.js', 'Telegram Bot API', 'JSON persistence', 'Responsive CSS', 'Railway-ready'],
+    highlights: ['Complete searchable 78-card illustrated gallery', 'English and Simplified Chinese reading system', 'Instant daily pull plus human-prepared three-card readings', 'Persistent deduplicated completion counter', 'Custom carrot mascot and tactile card interactions'],
+    github: 'https://github.com/simplyziannn/tarotcarrot', colors: ['#f39a35','#5a9d78'],
+    role: 'I designed and developed the end-to-end digital experience: interface, reading flows, bilingual system, card interactions, backend request handling, Telegram integration and deployment setup. My collaborator shaped the tarot perspective, interpretations, content direction and emotional tone.',
+    productNote: 'The application does not automate the personal reading itself. It prepares a structured request for the reading team, keeping a human in the fulfilment loop.',
+    media: [
+      { src: './public/assets/projects/tarotcarrot/landing.png', alt: 'Tarot Carrot illustrated landing page with floating cards, the creator couple and a garden of carrot mascots', label: 'The illustrated portal' },
+      { src: './public/assets/projects/tarotcarrot/card-back.png', alt: 'Custom Tarot Carrot card back featuring the carrot mascot', label: 'Custom card identity' },
+      { src: './public/assets/projects/tarotcarrot/the-lovers.png', alt: 'The Lovers card from the custom illustrated Tarot Carrot deck', label: 'One of 78 illustrated cards' },
+      { src: './public/assets/projects/tarotcarrot/mascot-soil-pop.png', alt: 'Cheerful carrot mascot popping out of the soil', label: 'A friendly guide' },
+      { src: './public/assets/projects/tarotcarrot/creators.png', alt: 'Illustration of the tarot reader and developer behind Tarot Carrot', label: 'Tarot reader × coder' }
+    ]
   },
   pokescan: {
     name: 'Poke Scan', category: 'Computer Vision', visibility: 'Public',

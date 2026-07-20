@@ -178,16 +178,47 @@ if (featuredStage) {
   }
 
   function buildTarot() {
-    const root = new THREE.Group(); root.name = 'tarotcarrot-growth-oracle';
-    const cardGeo = roundedRect(2.05, 3.05, .24, .18); cardGeo.center(); root.add(mesh(cardGeo, mat.dark, 'oracle-card'));
-    const insetGeo = roundedRect(1.73, 2.72, .19, .055); insetGeo.center(); root.add(mesh(insetGeo, mat.accent, 'raised-oracle-inlay', [0, 0, .2]));
-    root.add(mesh(new THREE.TorusGeometry(.57, .04, 9, 64), mat.bronze, 'growth-sun', [0, .62, .32]));
-    for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; root.add(mesh(new THREE.CapsuleGeometry(.026, .24, 4, 8), mat.bronze, `sun-ray-${i + 1}`, [Math.cos(a) * .82, .62 + Math.sin(a) * .82, .31], [0, 0, -a])); }
-    const carrot = mesh(new THREE.ConeGeometry(.34, .98, 28), mat.bronze, 'carrot-root', [0, -.68, .36], [0, 0, Math.PI]); root.add(carrot);
-    const nodes = [], labels = ['An idea appears', 'The concept finds focus', 'The experiment grows', 'A product direction emerges'];
-    [[-.27,-.13,1],[-.08,-.03,.25],[.1,-.02,-.18],[.28,-.12,-.55]].forEach(([x,y,r], index) => { const leaf = mesh(new THREE.CapsuleGeometry(.075, .48, 6, 12), index === 3 ? mat.bronze : mat.pale, `growth-symbol-${index + 1}`, [x, y, .37], [0, 0, r]); root.add(leaf); nodes.push(leaf); });
-    [[-.67,-1.12],[.7,-1.05],[-.73,1.18],[.72,1.14]].forEach(([x,y], i) => { const star = mesh(new THREE.OctahedronGeometry(.09, 0), mat.bronze, `oracle-star-${i + 1}`, [x,y,.34]); root.add(star); });
-    return { root, nodes, labels, update(t) { nodes.forEach((node, i) => { node.scale.setScalar(1 + Math.sin(t * 1.3 + i) * .035); }); } };
+    const root = new THREE.Group(); root.name = 'tarotcarrot-cheerful-oracle';
+    const outline = new THREE.MeshStandardMaterial({ color: 0x242435, roughness: .66, metalness: .02 });
+    const orange = new THREE.MeshPhysicalMaterial({ color: 0xf59b31, roughness: .52, clearcoat: .28, emissive: 0x7b2905, emissiveIntensity: .035 });
+    const green = new THREE.MeshPhysicalMaterial({ color: 0x67b77f, roughness: .56, clearcoat: .22 });
+    const pink = new THREE.MeshStandardMaterial({ color: 0xf5a9b4, roughness: .72 });
+    const soilMaterial = new THREE.MeshStandardMaterial({ color: 0x9d6e50, roughness: .9 });
+    const textureLoader = new THREE.TextureLoader();
+    const cardBackTexture = textureLoader.load('./public/assets/projects/tarotcarrot/card-back.png', texture => { texture.colorSpace = THREE.SRGBColorSpace; });
+    const loversTexture = textureLoader.load('./public/assets/projects/tarotcarrot/the-lovers.png', texture => { texture.colorSpace = THREE.SRGBColorSpace; });
+    const cardBackMaterial = new THREE.MeshBasicMaterial({ map: cardBackTexture, color: 0xffffff });
+    const loversMaterial = new THREE.MeshBasicMaterial({ map: loversTexture, color: 0xffffff });
+
+    const portalCard = new THREE.Group(); portalCard.name = 'face-down-portal-card'; portalCard.position.set(-.62, .12, -.65); portalCard.rotation.set(.04, -.18, -.14); root.add(portalCard);
+    const portalFrameGeo = roundedRect(1.72, 2.55, .18, .11); portalFrameGeo.center(); portalCard.add(mesh(portalFrameGeo, outline, 'portal-card-outline'));
+    portalCard.add(mesh(new THREE.PlaneGeometry(1.49, 2.27), cardBackMaterial, 'custom-card-back', [0, 0, .115]));
+
+    const soil = new THREE.Group(); soil.name = 'enchanted-soil-patch'; root.add(soil);
+    soil.add(mesh(new THREE.CylinderGeometry(1.05, 1.2, .34, 54), soilMaterial, 'garden-soil', [0, -1.23, .66], [0, 0, 0], [1, .48, .74]));
+    for (let index = 0; index < 9; index++) { const a = index / 9 * Math.PI * 2; soil.add(mesh(new THREE.SphereGeometry(.075 + index % 2 * .025, 12, 8), index % 3 ? mat.pale : pink, `soil-bloom-${index + 1}`, [Math.cos(a) * (.72 + index % 2 * .16), -1.05 + Math.sin(a) * .13, .78 + Math.sin(a) * .08])); }
+
+    const mascot = new THREE.Group(); mascot.name = 'carrot-mascot'; mascot.position.set(.2, -.16, .35); root.add(mascot);
+    mascot.add(mesh(new THREE.SphereGeometry(.61, 40, 28), orange, 'carrot-head', [0, .03, 0], [0, 0, 0], [1, .8, .8]));
+    mascot.add(mesh(new THREE.ConeGeometry(.54, 1.22, 38), orange, 'carrot-taper', [0, -.62, 0], [0, 0, Math.PI], [1, 1, .8]));
+    const eyeLeft = mesh(new THREE.SphereGeometry(.07, 18, 12), outline, 'left-eye', [-.2, .08, .49], [0, 0, 0], [.72, 1.15, .48]);
+    const eyeRight = eyeLeft.clone(); eyeRight.name = 'right-eye'; eyeRight.position.x = .2; mascot.add(eyeLeft, eyeRight);
+    mascot.add(mesh(new THREE.SphereGeometry(.105, 18, 12), pink, 'left-cheek', [-.34, -.08, .47], [0, 0, 0], [1.1, .6, .35]));
+    mascot.add(mesh(new THREE.SphereGeometry(.105, 18, 12), pink, 'right-cheek', [.34, -.08, .47], [0, 0, 0], [1.1, .6, .35]));
+    const smileCurve = new THREE.QuadraticBezierCurve3(new THREE.Vector3(-.14, -.08, .55), new THREE.Vector3(0, -.23, .6), new THREE.Vector3(.14, -.08, .55)); mascot.add(mesh(new THREE.TubeGeometry(smileCurve, 24, .025, 7, false), outline, 'carrot-smile'));
+    [[-.26,.62,.34],[0,.73,0],[.27,.61,-.36]].forEach(([x,y,r], index) => mascot.add(mesh(new THREE.CapsuleGeometry(.13, .52, 7, 16), green, `carrot-leaf-${index + 1}`, [x,y,0], [0,0,r], [1,1,.72])));
+    mascot.add(mesh(new THREE.CapsuleGeometry(.1, .58, 6, 14), orange, 'left-arm', [-.61, -.06, .02], [0, 0, -1.08], [1,1,.8]));
+    mascot.add(mesh(new THREE.CapsuleGeometry(.1, .58, 6, 14), orange, 'right-arm', [.61, -.06, .02], [0, 0, 1.08], [1,1,.8]));
+    for (let index = 0; index < 5; index++) mascot.add(mesh(new THREE.CapsuleGeometry(.018, .15, 3, 7), mat.bronze, `carrot-ridge-${index + 1}`, [index % 2 ? .32 : -.3, -.33 - index * .13, .43], [0,0,index % 2 ? 1.35 : -1.35]));
+
+    const orbit = new THREE.Group(); orbit.name = 'illustrated-card-orbit'; root.add(orbit);
+    const orbitCards = [[-1.52,.82,-.32,.24],[1.46,.75,-.22,-.2],[1.38,-.67,-.15,.18]];
+    orbitCards.forEach(([x,y,z,r], index) => { const card = new THREE.Group(); card.name = `orbiting-card-${index + 1}`; card.position.set(x,y,z); card.rotation.z = r; const frame = roundedRect(.58,.88,.08,.055); frame.center(); card.add(mesh(frame, outline, `orbiting-card-frame-${index + 1}`)); card.add(mesh(new THREE.PlaneGeometry(.49,.76), index === 1 ? loversMaterial : cardBackMaterial, `orbiting-card-art-${index + 1}`, [0,0,.115])); orbit.add(card); });
+    for (let index = 0; index < 8; index++) { const a = index / 8 * Math.PI * 2; orbit.add(mesh(new THREE.OctahedronGeometry(index % 2 ? .045 : .075, 0), index % 2 ? pink : mat.bronze, `tarot-sparkle-${index + 1}`, [Math.cos(a) * 1.72, Math.sin(a) * 1.22, .14])); }
+
+    const nodes = [portalCard, soil, mascot, orbit];
+    const labels = ['A question becomes an intention', 'The ritual stays grounded and approachable', 'A cheerful guide appears', 'Seventy-eight illustrated possibilities unfold'];
+    return { root, nodes, labels, update(t) { const intro = Math.min(1, t / 1.7), eased = 1 - Math.pow(1 - intro, 3); mascot.position.y = -1.22 + eased * 1.06 + Math.sin(t * 1.1) * .025; portalCard.rotation.z = -.14 - eased * .08; orbit.rotation.z = Math.sin(t * .24) * .055; orbitCards.forEach((_, index) => { const card = orbit.children[index]; if (card) card.position.y += Math.sin(t * .72 + index) * .00045; }); } };
   }
 
   function buildTravel() {
